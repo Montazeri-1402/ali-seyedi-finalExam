@@ -11,7 +11,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3000/bmi?age=20&weight=70&gender=femboy&height=170",
+					"raw": "http://127.0.0.1:3000/bmi?age=20&weight=70&gender=male&height=170",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -34,7 +34,7 @@
 						},
 						{
 							"key": "gender",
-							"value": "femboy"
+							"value": "male"
 						},
 						{
 							"key": "height",
@@ -51,7 +51,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3000/bmi/list?order=desc",
+					"raw": "http://127.0.0.1:3000/bmi/list?order=asc",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -67,7 +67,7 @@
 					"query": [
 						{
 							"key": "order",
-							"value": "desc"
+							"value": "asc"
 						}
 					]
 				}
@@ -80,7 +80,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3000/bmi/?id=21",
+					"raw": "http://127.0.0.1:3000/bmi/?id=15",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -96,7 +96,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "21"
+							"value": "15"
 						}
 					]
 				}
