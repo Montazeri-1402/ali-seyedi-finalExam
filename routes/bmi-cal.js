@@ -31,10 +31,9 @@ router.post('/', async function(req, res, next) {
 });
 /* Get data. */
 router.get('/list', async function (req, res, next) {
-    let { orderBy } = req.query;
-    let bmi;
+    const orderBy = req.query.order;
 
-    if (orderBy === "asc") {
+    if (orderBy == "asc") {
         bmi = await prisma.bmi.findMany({
             orderBy: {
                 createdAt: 'asc',
@@ -55,7 +54,6 @@ router.get('/list', async function (req, res, next) {
 /* Get data. */
 router.get('/', async function (req, res, next) {
     let { id } = req.query.id;
-    let { orderBy } = req.query.order;
     id = Number(id);
     const chats = await prisma.bmi.findMany({
         where: {
