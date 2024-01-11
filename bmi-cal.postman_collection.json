@@ -51,7 +51,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3000/bmi/list?order=asc",
+					"raw": "http://127.0.0.1:3000/bmi/list?order=desc&page=2",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -67,7 +67,11 @@
 					"query": [
 						{
 							"key": "order",
-							"value": "asc"
+							"value": "desc"
+						},
+						{
+							"key": "page",
+							"value": "2"
 						}
 					]
 				}
@@ -80,7 +84,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3000/bmi/?id=15",
+					"raw": "http://127.0.0.1:3000/bmi/?id=23",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -96,7 +100,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "15"
+							"value": "23"
 						}
 					]
 				}
