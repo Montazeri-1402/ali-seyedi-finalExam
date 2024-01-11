@@ -16,8 +16,8 @@ router.post('/', async function(req, res, next) {
     }
     const weight = parseInt(req.query.weight);
     let Ip = req.ip;
-    const height = parseFloat(req.query.height)/100;
-    const bmi = weight / (height ^ 2);
+    const height = parseFloat(req.query.height);
+    const bmi = weight / (((height)/100) ^ 2);
     const createdBmi = await prisma.bmi.create({
         data: {
             age: age,
