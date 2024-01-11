@@ -15,6 +15,7 @@ router.post('/', async function(req, res, next) {
         gender = true;
     }
     const weight = parseInt(req.query.weight);
+    let Ip = req.ip;
     const height = parseFloat(req.query.height)/100;
     const bmi = weight / (height ^ 2);
     const createdBmi = await prisma.bmi.create({
@@ -23,7 +24,8 @@ router.post('/', async function(req, res, next) {
             gender: gender,
             weight: weight,
             height: height,
-            bmi: bmi
+            bmi: bmi,
+            ip : Ip
         }
     });
 
@@ -32,22 +34,35 @@ router.post('/', async function(req, res, next) {
 /* Get data. */
 router.get('/list', async function (req, res, next) {
     const orderBy = req.query.order;
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = 5;
+
+    let bmi;
+    const totalCount = await prisma.bmi.count(); 
 
     if (orderBy == "asc") {
         bmi = await prisma.bmi.findMany({
             orderBy: {
                 createdAt: 'asc',
-            }
+            },
+            skip: (page - 1) * pageSize,
+            take: pageSize,
         });
     } else {
         bmi = await prisma.bmi.findMany({
             orderBy: {
                 createdAt: 'desc',
-            }
+            },
+            skip: (page - 1) * pageSize,
+            take: pageSize,
         });
     }
 
-    res.send(bmi);
+    res.send({
+        data: bmi,
+        page: page,
+        totalCount: totalCount,
+    });
 });
 
 

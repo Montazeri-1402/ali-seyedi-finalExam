@@ -17,6 +17,7 @@ model Bmi {
   gender    Boolean  @default(false)
   weight    Int?  
   height    Float?  
+  ip        String?  
   bmi       Float?
   createdAt DateTime @default(now())
 }
