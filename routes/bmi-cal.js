@@ -15,7 +15,7 @@ router.post('/', async function(req, res, next) {
         gender = true;
     }
     const weight = parseInt(req.query.weight);
-    const height = parseFloat(req.query.height);
+    const height = parseFloat(req.query.height)/100;
     const bmi = weight / (height ^ 2);
     const createdBmi = await prisma.bmi.create({
         data: {
@@ -53,11 +53,10 @@ router.get('/list', async function (req, res, next) {
 
 /* Get data. */
 router.get('/', async function (req, res, next) {
-    let { id } = req.query.id;
-    id = Number(id);
+    const id = parseInt(req.query.id);
     const chats = await prisma.bmi.findMany({
         where: {
-            id,
+            id : id,
         }
     });
     res.send(chats);
